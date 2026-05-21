@@ -1,0 +1,168 @@
+[33mcommit 740d5c6be6908c617cb828a3697b9c4da1ab18a0[m
+Author: MarcEKLA <marcekladious7@gmail.com>
+Date:   Thu May 21 10:53:51 2026 +0200
+
+    Initial commit
+
+ .gitignore                                         |  18 [32m+++[m
+ README.md                                          | 126 [32m++++++++++++++++++++[m
+ artapp-front/index.html                            |  12 [32m++[m
+ artapp-front/package.json                          |  40 [32m+++++++[m
+ artapp-front/postcss.config.js                     |   6 [32m+[m
+ artapp-front/src/app/App.tsx                       | 102 [32m++++++++++++++++[m
+ artapp-front/src/app/providers.tsx                 |  28 [32m+++++[m
+ artapp-front/src/components/LoginPage.tsx          |  92 [32m+++++++++++++++[m
+ artapp-front/src/components/OeuvreCard.test.tsx    |  52 [32m+++++++++[m
+ artapp-front/src/components/RegisterPage.tsx       | 108 [32m+++++++++++++++++[m
+ artapp-front/src/hooks/useAuth.ts                  |  13 [32m+++[m
+ artapp-front/src/hooks/useOeuvres.ts               |  58 [32m+++++++++[m
+ artapp-front/src/index.css                         |   3 [32m+[m
+ artapp-front/src/main.tsx                          |  14 [32m+++[m
+ artapp-front/src/services/auth.service.ts          |  14 [32m+++[m
+ artapp-front/src/services/axiosInstance.ts         |  31 [32m+++++[m
+ artapp-front/src/services/oeuvre.service.ts        |  38 [32m++++++[m
+ artapp-front/src/stores/auth.store.ts              |  35 [32m++++++[m
+ artapp-front/src/test/setup.ts                     |   2 [32m+[m
+ artapp-front/src/types/api.types.ts                |  66 [32m+++++++++++[m
+ artapp-front/tailwind.config.js                    |  11 [32m++[m
+ artapp-front/tsconfig.json                         |  24 [32m++++[m
+ artapp-front/tsconfig.node.json                    |  10 [32m++[m
+ artapp-front/vite.config.ts                        |  20 [32m++++[m
+ artapp/pom.xml                                     |  97 [32m+++++++++++++++[m
+ .../java/com/esiea/artapp/ArtAppApplication.java   |  12 [32m++[m
+ .../esiea/artapp/config/PasswordEncoderConfig.java |  14 [32m+++[m
+ .../com/esiea/artapp/config/SecurityConfig.java    |  93 [32m+++++++++++++++[m
+ .../com/esiea/artapp/config/SwaggerConfig.java     |  29 [32m+++++[m
+ .../esiea/artapp/controller/ArtisteController.java |  61 [32m++++++++++[m
+ .../esiea/artapp/controller/AuthController.java    |  96 [32m+++++++++++++++[m
+ .../artapp/controller/MouvementController.java     |  53 [32m+++++++++[m
+ .../esiea/artapp/controller/OeuvreController.java  |  81 [32m+++++++++++++[m
+ .../esiea/artapp/controller/UserController.java    |  51 [32m++++++++[m
+ .../java/com/esiea/artapp/dto/ArtResponse.java     |  41 [32m+++++++[m
+ .../main/java/com/esiea/artapp/dto/ArtisteDTO.java |  19 [32m+++[m
+ .../java/com/esiea/artapp/dto/LoginRequestDTO.java |  22 [32m++++[m
+ .../java/com/esiea/artapp/dto/MouvementDTO.java    |  19 [32m+++[m
+ .../java/com/esiea/artapp/dto/OeuvreCreateDTO.java |  48 [32m++++++++[m
+ .../com/esiea/artapp/dto/OeuvreResponseDTO.java    |  57 [32m+++++++++[m
+ .../main/java/com/esiea/artapp/dto/PageDTO.java    |  50 [32m++++++++[m
+ .../java/com/esiea/artapp/dto/RegisterDTO.java     |  35 [32m++++++[m
+ .../main/java/com/esiea/artapp/dto/UserDTO.java    |  29 [32m+++++[m
+ .../java/com/esiea/artapp/entities/Artiste.java    |  37 [32m++++++[m
+ .../java/com/esiea/artapp/entities/Mouvement.java  |  37 [32m++++++[m
+ .../java/com/esiea/artapp/entities/Oeuvre.java     |  92 [32m+++++++++++++++[m
+ .../main/java/com/esiea/artapp/entities/Role.java  |  29 [32m+++++[m
+ .../main/java/com/esiea/artapp/entities/User.java  |  60 [32m++++++++++[m
+ .../artapp/exception/GlobalExceptionHandler.java   |  54 [32m+++++++++[m
+ .../exception/ResourceNotFoundException.java       |   8 [32m++[m
+ .../exception/TitreAlreadyExistsException.java     |   8 [32m++[m
+ .../com/esiea/artapp/mapper/ArtisteMapper.java     |  16 [32m+++[m
+ .../com/esiea/artapp/mapper/MouvementMapper.java   |  16 [32m+++[m
+ .../java/com/esiea/artapp/mapper/OeuvreMapper.java |  52 [32m+++++++++[m
+ .../artapp/repositories/ArtisteRepository.java     |   8 [32m++[m
+ .../artapp/repositories/MouvementRepository.java   |  11 [32m++[m
+ .../artapp/repositories/OeuvreRepository.java      |  15 [32m+++[m
+ .../esiea/artapp/repositories/RoleRepository.java  |  10 [32m++[m
+ .../esiea/artapp/repositories/UserRepository.java  |  11 [32m++[m
+ .../artapp/security/JWTAuthenticationFilter.java   |  76 [32m++++++++++++[m
+ .../java/com/esiea/artapp/security/JwtService.java |  52 [32m+++++++++[m
+ .../artapp/security/MyUserDetailsService.java      |  33 [32m++++++[m
+ .../com/esiea/artapp/service/OeuvreService.java    |  24 [32m++++[m
+ .../esiea/artapp/service/OeuvreServiceImpl.java    | 130 [32m+++++++++++++++++++++[m
+ artapp/src/main/resources/application.properties   |  12 [32m++[m
+ .../artapp/controller/OeuvreControllerTest.java    |  54 [32m+++++++++[m
+ .../com/esiea/artapp/mapper/OeuvreMapperTest.java  |  37 [32m++++++[m
+ screenshots/test_01.png                            | Bin [31m0[m -> [32m12837[m bytes
+ screenshots/test_02.png                            | Bin [31m0[m -> [32m11587[m bytes
+ screenshots/test_03.png                            | Bin [31m0[m -> [32m12426[m bytes
+ screenshots/test_04.png                            | Bin [31m0[m -> [32m13252[m bytes
+ screenshots/test_05.png                            | Bin [31m0[m -> [32m12736[m bytes
+ screenshots/test_06.png                            | Bin [31m0[m -> [32m12427[m bytes
+ screenshots/test_07.png                            | Bin [31m0[m -> [32m12294[m bytes
+ screenshots/test_08.png                            | Bin [31m0[m -> [32m12332[m bytes
+ screenshots/test_09.png                            | Bin [31m0[m -> [32m12206[m bytes
+ tatus                                              |   0
+ 77 files changed, 2712 insertions(+)
+[33mcommit 740d5c6be6908c617cb828a3697b9c4da1ab18a0[m
+Author: MarcEKLA <marcekladious7@gmail.com>
+Date:   Thu May 21 10:53:51 2026 +0200
+
+    Initial commit
+
+ .gitignore                                         |  18 [32m+++[m
+ README.md                                          | 126 [32m++++++++++++++++++++[m
+ artapp-front/index.html                            |  12 [32m++[m
+ artapp-front/package.json                          |  40 [32m+++++++[m
+ artapp-front/postcss.config.js                     |   6 [32m+[m
+ artapp-front/src/app/App.tsx                       | 102 [32m++++++++++++++++[m
+ artapp-front/src/app/providers.tsx                 |  28 [32m+++++[m
+ artapp-front/src/components/LoginPage.tsx          |  92 [32m+++++++++++++++[m
+ artapp-front/src/components/OeuvreCard.test.tsx    |  52 [32m+++++++++[m
+ artapp-front/src/components/RegisterPage.tsx       | 108 [32m+++++++++++++++++[m
+ artapp-front/src/hooks/useAuth.ts                  |  13 [32m+++[m
+ artapp-front/src/hooks/useOeuvres.ts               |  58 [32m+++++++++[m
+ artapp-front/src/index.css                         |   3 [32m+[m
+ artapp-front/src/main.tsx                          |  14 [32m+++[m
+ artapp-front/src/services/auth.service.ts          |  14 [32m+++[m
+ artapp-front/src/services/axiosInstance.ts         |  31 [32m+++++[m
+ artapp-front/src/services/oeuvre.service.ts        |  38 [32m++++++[m
+ artapp-front/src/stores/auth.store.ts              |  35 [32m++++++[m
+ artapp-front/src/test/setup.ts                     |   2 [32m+[m
+ artapp-front/src/types/api.types.ts                |  66 [32m+++++++++++[m
+ artapp-front/tailwind.config.js                    |  11 [32m++[m
+ artapp-front/tsconfig.json                         |  24 [32m++++[m
+ artapp-front/tsconfig.node.json                    |  10 [32m++[m
+ artapp-front/vite.config.ts                        |  20 [32m++++[m
+ artapp/pom.xml                                     |  97 [32m+++++++++++++++[m
+ .../java/com/esiea/artapp/ArtAppApplication.java   |  12 [32m++[m
+ .../esiea/artapp/config/PasswordEncoderConfig.java |  14 [32m+++[m
+ .../com/esiea/artapp/config/SecurityConfig.java    |  93 [32m+++++++++++++++[m
+ .../com/esiea/artapp/config/SwaggerConfig.java     |  29 [32m+++++[m
+ .../esiea/artapp/controller/ArtisteController.java |  61 [32m++++++++++[m
+ .../esiea/artapp/controller/AuthController.java    |  96 [32m+++++++++++++++[m
+ .../artapp/controller/MouvementController.java     |  53 [32m+++++++++[m
+ .../esiea/artapp/controller/OeuvreController.java  |  81 [32m+++++++++++++[m
+ .../esiea/artapp/controller/UserController.java    |  51 [32m++++++++[m
+ .../java/com/esiea/artapp/dto/ArtResponse.java     |  41 [32m+++++++[m
+ .../main/java/com/esiea/artapp/dto/ArtisteDTO.java |  19 [32m+++[m
+ .../java/com/esiea/artapp/dto/LoginRequestDTO.java |  22 [32m++++[m
+ .../java/com/esiea/artapp/dto/MouvementDTO.java    |  19 [32m+++[m
+ .../java/com/esiea/artapp/dto/OeuvreCreateDTO.java |  48 [32m++++++++[m
+ .../com/esiea/artapp/dto/OeuvreResponseDTO.java    |  57 [32m+++++++++[m
+ .../main/java/com/esiea/artapp/dto/PageDTO.java    |  50 [32m++++++++[m
+ .../java/com/esiea/artapp/dto/RegisterDTO.java     |  35 [32m++++++[m
+ .../main/java/com/esiea/artapp/dto/UserDTO.java    |  29 [32m+++++[m
+ .../java/com/esiea/artapp/entities/Artiste.java    |  37 [32m++++++[m
+ .../java/com/esiea/artapp/entities/Mouvement.java  |  37 [32m++++++[m
+ .../java/com/esiea/artapp/entities/Oeuvre.java     |  92 [32m+++++++++++++++[m
+ .../main/java/com/esiea/artapp/entities/Role.java  |  29 [32m+++++[m
+ .../main/java/com/esiea/artapp/entities/User.java  |  60 [32m++++++++++[m
+ .../artapp/exception/GlobalExceptionHandler.java   |  54 [32m+++++++++[m
+ .../exception/ResourceNotFoundException.java       |   8 [32m++[m
+ .../exception/TitreAlreadyExistsException.java     |   8 [32m++[m
+ .../com/esiea/artapp/mapper/ArtisteMapper.java     |  16 [32m+++[m
+ .../com/esiea/artapp/mapper/MouvementMapper.java   |  16 [32m+++[m
+ .../java/com/esiea/artapp/mapper/OeuvreMapper.java |  52 [32m+++++++++[m
+ .../artapp/repositories/ArtisteRepository.java     |   8 [32m++[m
+ .../artapp/repositories/MouvementRepository.java   |  11 [32m++[m
+ .../artapp/repositories/OeuvreRepository.java      |  15 [32m+++[m
+ .../esiea/artapp/repositories/RoleRepository.java  |  10 [32m++[m
+ .../esiea/artapp/repositories/UserRepository.java  |  11 [32m++[m
+ .../artapp/security/JWTAuthenticationFilter.java   |  76 [32m++++++++++++[m
+ .../java/com/esiea/artapp/security/JwtService.java |  52 [32m+++++++++[m
+ .../artapp/security/MyUserDetailsService.java      |  33 [32m++++++[m
+ .../com/esiea/artapp/service/OeuvreService.java    |  24 [32m++++[m
+ .../esiea/artapp/service/OeuvreServiceImpl.java    | 130 [32m+++++++++++++++++++++[m
+ artapp/src/main/resources/application.properties   |  12 [32m++[m
+ .../artapp/controller/OeuvreControllerTest.java    |  54 [32m+++++++++[m
+ .../com/esiea/artapp/mapper/OeuvreMapperTest.java  |  37 [32m++++++[m
+ screenshots/test_01.png                            | Bin [31m0[m -> [32m12837[m bytes
+ screenshots/test_02.png                            | Bin [31m0[m -> [32m11587[m bytes
+ screenshots/test_03.png                            | Bin [31m0[m -> [32m12426[m bytes
+ screenshots/test_04.png                            | Bin [31m0[m -> [32m13252[m bytes
+ screenshots/test_05.png                            | Bin [31m0[m -> [32m12736[m bytes
+ screenshots/test_06.png                            | Bin [31m0[m -> [32m12427[m bytes
+ screenshots/test_07.png                            | Bin [31m0[m -> [32m12294[m bytes
+ screenshots/test_08.png                            | Bin [31m0[m -> [32m12332[m bytes
+ screenshots/test_09.png                            | Bin [31m0[m -> [32m12206[m bytes
+ tatus                                              |   0
+ 77 files changed, 2712 insertions(+)
