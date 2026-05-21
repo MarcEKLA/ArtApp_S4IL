@@ -1,0 +1,7 @@
+﻿node_modules/
+dist/
+.env
+*.class
+target/
+
+package-lock.json
